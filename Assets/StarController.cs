@@ -8,7 +8,7 @@ public class StarController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        this.transform.Rotate(0, /*Random.Range(0,360)*/0, 0);
+        this.transform.Rotate(0, Random.Range(0,360), 0);
     }
 
     // Update is called once per frame
