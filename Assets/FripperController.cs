@@ -17,6 +17,7 @@ public class FripperController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         if (Input.GetKeyDown(KeyCode.LeftArrow) && tag == "LeftFripperTag") {
             SetAngle(this.flickAngle);
         }
@@ -29,6 +30,36 @@ public class FripperController : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.RightArrow) && tag == "RightFripperTag") {
             SetAngle(this.defaultAngle);
         }
+        
+        //lesson5の追加課題「キーボード操作」↓
+        /*
+        if (Input.GetKeyDown(KeyCode.A) && tag == "LeftFripperTag")
+        {
+            SetAngle(this.flickAngle);
+        }
+        if (Input.GetKeyDown(KeyCode.D) && tag == "RightFripperTag")
+        {
+            SetAngle(this.flickAngle);
+        }
+        if (Input.GetKeyUp(KeyCode.A) && tag == "LeftFripperTag")
+        {
+            SetAngle(this.defaultAngle);
+        }
+        if (Input.GetKeyUp(KeyCode.D) && tag == "RightFripperTag")
+        {
+            SetAngle(this.defaultAngle);
+        }
+        if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            SetAngle(this.flickAngle);
+        }
+        if (Input.GetKeyUp(KeyCode.S) || Input.GetKeyUp(KeyCode.DownArrow))
+        {
+            SetAngle(this.defaultAngle);
+        }
+        */
+        //lesson6の追加課題「タッチ操作」UnityRemote実施不可につき実装断念
+
     }
 
     public void SetAngle(float angle) {
