@@ -7,6 +7,9 @@ public class FripperController : MonoBehaviour
     private HingeJoint myHingeJoint;
     private float defaultAngle = 20;
     private float flickAngle = -20;
+
+    private Touch touch;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,7 +20,7 @@ public class FripperController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        /*
         if (Input.GetKeyDown(KeyCode.LeftArrow) && tag == "LeftFripperTag") {
             SetAngle(this.flickAngle);
         }
@@ -30,7 +33,7 @@ public class FripperController : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.RightArrow) && tag == "RightFripperTag") {
             SetAngle(this.defaultAngle);
         }
-        
+        */
         //lesson5の追加課題「キーボード操作」↓
         /*
         if (Input.GetKeyDown(KeyCode.A) && tag == "LeftFripperTag")
@@ -58,11 +61,53 @@ public class FripperController : MonoBehaviour
             SetAngle(this.defaultAngle);
         }
         */
-        //lesson6の追加課題「タッチ操作」UnityRemote実施不可につき実装断念
+        //lesson6の追加課題「タッチ操作」
+        if (Input.touchCount == 0)
+        {
+            SetAngle(this.defaultAngle);
+        }
+        else if (Input.touchCount == 1)
+        {
+            this.touch = Input.GetTouch(0);
+            if (tag == "LeftFripperTag" && touch.position.x < Screen.width / 2)
+            {
+                SetAngle(this.flickAngle);
+            }
+            else if (tag == "RightFripperTag" && touch.position.x >= Screen.width / 2)
+            {
+                SetAngle(this.flickAngle);
+            }
+        }
+        else if (Input.touchCount == 2)
+        {
+            this.touch = Input.GetTouch(0);
+            if (tag == "LeftFripperTag" && touch.position.x < Screen.width / 2)
+            {
+                SetAngle(this.flickAngle);
+            }
+            else if (tag == "RightFripperTag" && touch.position.x >= Screen.width / 2)
+            {
+                SetAngle(this.flickAngle);
+            }
+            this.touch = Input.GetTouch(1);
+            if (tag == "LeftFripperTag" && touch.position.x < Screen.width / 2)
+            {
+                SetAngle(this.flickAngle);
+            }
+            else if (tag == "RightFripperTag" && touch.position.x >= Screen.width / 2)
+            {
+                SetAngle(this.flickAngle);
+            }
+        }
 
+        if (touch.phase == TouchPhase.Ended)
+        {
+            SetAngle(this.defaultAngle);
+        }
     }
 
-    public void SetAngle(float angle) {
+    public void SetAngle(float angle)
+    {
         JointSpring jointSpr = this.myHingeJoint.spring;
         jointSpr.targetPosition = angle;
         this.myHingeJoint.spring = jointSpr;
